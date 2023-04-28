@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import { cardsData } from "../cards";
-import Counter from "./Counter"; // Importar el componente Counter
+import Counter from "./Counter";
+import RestartButton from "./RestartButton";
 
 function Game() {
   // states
@@ -10,6 +11,7 @@ function Game() {
   let [secondClick, setSecondClick] = useState(false);
   let [wait, setWait] = useState(false);
   let [count, setCount] = useState(0);
+  let [restart, setRestart] = useState(false); // Agregar el estado restart
   let [gameOver, setGameOver] = useState(false); // Agregar el estado gameOver
 
   // functions
@@ -40,7 +42,8 @@ function Game() {
   };
 
   const handleClick = async (e, clickedCard) => {
-    if (wait || clickedCard.passed || gameOver) { // Agregar la condición gameOver en el if
+    if (wait || clickedCard.passed || gameOver) {
+        
       return;
     }
     if (!secondClick) {
@@ -65,28 +68,46 @@ function Game() {
     }
   };
 
+    const restartGame = () => {
+        setCardsState(cardsData);
+        setFirstCard(null);
+        setSecondClick(false);
+        setWait(false);
+        setCount(0);
+        setRestart(false);
+        setGameOver(false);
+    };
+
   return (
     <>
       {gameOver ? (
-        <div className="game-over-message">¡Felicidades, has ganado!</div>
-      ) : (
         <>
-          <section className="memory-game">
-            {cardsState?.map((card) => {
-              return (
-                <Card
-                  key={card.id}
-                  card={card}
-                  onClick={(e) => handleClick(e, card)}
-                />
-              );
-            })}
-          </section>
-          <section className="counter">
-            <Counter
-              count={count}
-              style={{ position: "absolute", bottom: "0" }} /> {/* Agregar el componente Counter */}
-          </section></>
+            <section clasname="counter">
+            <div className="game-over-message">¡Felicidades, has ganado!</div>
+            </section>
+            <section className="counter">
+            <RestartButton variant="contained"/>
+            </section>
+        </>
+        ) : (
+            <>
+                <section className="counter">
+                    <Counter
+                    count={count}
+                    style={{ position: "absolute", bottom: "0" }} /> {/* Agregar el componente Counter */}
+                </section>
+                <section className="memory-game">
+                    {cardsState?.map((card) => {
+                    return (
+                        <Card
+                        key={card.id}
+                        card={card}
+                        onClick={(e) => handleClick(e, card)}
+                        />
+                    );
+                    })}
+                </section>
+            </>
         )}
     </>
   );

@@ -2,11 +2,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color:  lightgrey;
 }
 
 #root {
-    display: flex;
-    background: antiquewhite;
+    display: row;
+    background-color: lightgrey;
+    justify-content: center;
+    align-items: center;
 }
 
 .memory-game {
@@ -27,6 +30,7 @@
     height: calc(24% - 10px);
     margin: 5px;
     position: relative;
+    border-radius: 10%;
     transform-style: preserve-3d;
     transition: transform 0.5s;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -49,7 +53,7 @@
     padding: 10px;
     position: absolute;
     border-radius: 5px;
-    background: rgb(239, 184, 16);
+    background: linear-gradient(to bottom right, rgb(239, 184, 16), rgb(231, 217, 177));
     backface-visibility: hidden;
 }
 
@@ -59,17 +63,38 @@
 
 .counter {
     margin-top: 1rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     display: flex;
-    justify-content: center; /* Añadido */
-    align-items: center; /* Añadido */
-    height: 2rem; /* Añadido */
+    justify-content: center; 
+    align-items: center; 
+    height: 2rem;
+    color: rgb(163, 125, 9); 
 }
 
 .game-over-message {
-    font-size: 2rem;
+    font-size: 5rem;
     text-align: center;
     margin-top: 1rem;
-    
+    -webkit-text-stroke: 2px black;
+    color: rgb(239, 184, 16); 
 }
+
+.restart-button {
+    background-color: rgb(163, 125, 9);
+    align-self: center;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .restart-button:hover {
+    background-color: #000;
+    color: rgb(222, 177, 42);
+  }
