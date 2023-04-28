@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/TheDeloz-v2/Lab8-STW#readme",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.2",
+    "classnames": "^2.3.2",
+    "file-loader": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

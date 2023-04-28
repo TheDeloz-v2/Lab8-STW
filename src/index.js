@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./App.scss";
+import "./assets/css/index.scss";
+import Game from "./components/Game";
 
-const el = document.getElementById("app");
-
-ReactDOM.render(<App />, el);
+ReactDOM.render(
+  <React.StrictMode>
+    <Game />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
